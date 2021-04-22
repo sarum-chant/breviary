@@ -1,0 +1,631 @@
+\documentclass[
+  fontsize=12pt,
+  paper=letter,
+  DIV=9,
+  twoside=semi,
+  openany,
+  % headsepline,
+  parskip=never]
+{scrbook}
+
+\usepackage[autocompile]{gregoriotex}
+\usepackage{unicode-math}
+\usepackage{microtype}
+\usepackage{embrac}
+\usepackage[open]{bookmark}
+\usepackage{xurl}
+\usepackage{marginnote}
+
+\usepackage[canadian,main=latin]{babel}
+
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\setmainfont[Numbers=OldStyle,Numbers=Proportional]{Junicode}
+
+% Decorative fonts
+\newfontfamily\gothic{Old English Text MT}
+\newfontfamily\woodcut{TypographerWoodcutInitialsOne}
+
+
+\renewcommand\raggedsection{\centering} % centre all headings
+\setkomafont{disposition}{\normalfont\itshape} % all headings in italics
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbers
+\addtokomafont{subject}{\normalfont\scshape\addfontfeatures{Letters=UppercaseSmallCaps}\Huge}
+\addtokomafont{publishers}{\scshape\addfontfeatures{Letters=UppercaseSmallCaps}}
+
+% \RedeclareSectionCommands[
+  % beforeskip=3sp,
+  % afterskip=1sp,
+  % afterindent=true]{section, subsection}
+\RedeclareSectionCommand[afterskip=1sp]{subsubsection}
+
+\hypersetup{
+  unicode,
+  pdftitle={Breviarium Sarisburiense cum nota},
+  pdfauthor={William Renwick},
+  hidelinks
+}
+
+% Line spacing
+\usepackage{setspace}
+\setstretch{1.2}
+
+% Columns with vertical rule
+\usepackage{multicol}
+\setlength{\columnsep}{1.5pc}
+\setlength{\columnseprule}{0.7pt}
+
+\usepackage{lettrine}
+\LettrineRealHeighttrue
+\renewcommand{\LettrineTextFont}{\MakeUppercase}
+\setlength{\DefaultNindent}{0em}
+
+\urlstyle{same} % disable monospaced font for URLs
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+% Move footnote marker into left margin
+\deffootnote{0em}{1.6em}{\thefootnotemark\enskip}
+\setfootnoterule{0pt} % Remove footnote rule
+
+% use all small caps for \textsc
+\let\mixtextsc\textsc
+\renewcommand{\textsc}[1]{\mixtextsc{\addfontfeatures{Letters=UppercaseSmallCaps}{#1}}}
+
+% Font substitution
+\usepackage{newunicodechar}
+\newfontfamily{\paraphfont}{Adobe Jenson Pro}
+\newunicodechar{¶}{{\paraphfont ¶}}
+
+% Endnotes setup
+\usepackage{enotez}
+\setenotez{
+  list-name={Notae},
+  backref=true
+}
+\AtEveryEndnotesList{
+  \markboth{Notae}{Notae}
+  \setlength{\columnsep}{2pc}
+  \setlength{\columnseprule}{0pt}
+  \begin{multicols}{2}
+}
+\AfterEveryEndnotesList{\end{multicols}}
+\let\footnote=\endnote % turn footnotes into endnotes
+
+% Gregorio settings
+\gresetgregpath{{./scores/}}
+\grechangestyle{initial}{\woodcut\fontsize{70}{70}\selectfont}
+\grechangestyle{commentary}{\footnotesize}
+\grechangestyle{annotation}{\footnotesize}
+\grechangestyle{abovelinestext}{\scriptsize}
+\grechangestyle{firstsyllableinitial}{\MakeUppercase}
+\grechangedim{annotationraise}{0mm}{scalable}
+\grechangedim{abovelinestextraise}{-2mm}{scalable}
+
+\gresetheadercapture{commentary}{grecommentary}{}
+\gresetheadercapture{annotation}{greannotation}{}
+\gresetheadercapture{annotation}{greannotation}{}
+
+\newenvironment{lesson}
+    {\begin{multicols}{2}
+    \renewcommand{\LettrineFontHook}{\gothic}
+    \setcounter{DefaultLines}{2}}
+    {\end{multicols}}
+
+\newenvironment{lesson1}
+    {\begin{multicols}{2}
+    \renewcommand{\LettrineFontHook}{\woodcut}
+    \setcounter{DefaultLines}{3}}
+    {\end{multicols}}
+
+\newcommand{\newrubric}{\hfill \break \noindent}
+
+\input{ushyphex} % standard English exceptions
+
+\recalctypearea
+
+\begin{document}
+
+\frontmatter
+
+\subject{The Sarum Rite}
+
+\title{Breviarium Sarisburiense cum nota.}
+
+\subtitle{Tomus B.\\
+Fasciculus 12.\\
+Proprium de tempore.\\
+In octava sancti Stephani.\\
+In octava sancti Johannis.\\
+In octava sanctorum innocentium.}
+
+\author{Edited by William Renwick.}
+
+\date{MMVIII.}
+
+\publishers{The Gregorian Institute of Canada}
+
+\lowertitleback{
+\KOMAoptions{parskip=half}
+
+\begin{otherlanguage}{canadian}
+\emph{The Sarum Rite} is published by The Gregorian Institute of Canada/L'Institut grégorien du Canada, 45 Mercer Street, Dundas, Ontario, Canada L9H 2N8. The Gregorian Institute of Canada is affiliated with the School of the Arts, McMaster University.
+
+\url{http://sarum-chant.ca}
+
+This document first published July 1, 2008.
+
+Revised October 2011.
+
+All rights reserved. This publication may be downloaded and stored on personal computers, and may be printed for purposes of research, study, education, and performance. No part of this publication may be uploaded, printed for sale or distribution, or otherwise transmitted or sold, without the prior permission in writing of the Gregorian Institute of Canada.
+
+The Gregorian Institute of Canada/L'Institut grégorien du Canada is a charitable organization registered by the Government of Canada.
+
+\url{http://www.gregorian.ca}
+
+© The Gregorian Institute of Canada, 2008.
+\end{otherlanguage}
+}
+
+\maketitle
+
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{¶ In octava sancti Stephani.}
+
+\section{Ad matutinas.}
+
+\emph{Invitatorium, hymni, antiphone et psalmi sicut in prima die dicuntur.} 342.
+
+\emph{℣.} Glória et honóre coronásti eum Dómine. XX.
+
+\begin{lesson1}
+\subsubsection{¶ Beati Maximi episcopi. \\ Lectio prima.\footnote{B. Maximi, Homilie de Sanctis~: In Natali Stephani. \emph{Op.} p.~224, Paris, 1671. {[}SB:ccxcv.{]}}}
+
+\lettrine{C}{o}nsideráte atténtius dilectíssimi fratres~: cum beátus martir Stéphanus Dóminum nostrum Jesum Christum ad déxteram Dei Patris stare vidísset~: cur se fílium hóminis vidísse\footnote{`vidére', SB:ccxcv.} testátus est~: et non pótius Fílium Dei~: cum útique plus honóris Dómino delatúrus viderétur~: si se Dei pótius quam hóminis Fílium vidére dixísset. Sed certa rátio postulábat~: ut hoc ita et ostenderétur in celo~: et predicarétur in mundo.
+\end{lesson1}
+
+\begin{center}
+  \emph{Si dominica fuerit~: dividantur iste tres lectiones in sex~: hoc modo.}
+\end{center}
+
+\begin{lesson}
+\subsubsection{Si dominica fuerit~: lectio ij.}
+
+\lettrine{O}{m}ne enim Judeórum scándalum in hoc erat~: cur Dóminus noster Jesus Christus qui secúndum carnem est fílius hóminis esse étiam Fílius Dei dicerétur. Ideo ergo pulchre scriptúra divína fílium hóminis ad déxteram Dei Patris stare memorávit~: ut ad confundéndam Judeórum incredulitátem ille ostenderétur mártyri in celo~: qui a pérfidis Judéis negabátur in mundo. Et illi testimónium celéstis véritas daret~: cui fidem terréna impíetas derogáret.
+\end{lesson}
+
+\gregorioscore{007704-stephanus-servus}
+
+\begin{lesson}
+\subsubsection{Lectio secunda. {[}sive iij.{]}}
+
+\lettrine{S}{i} quid autem distáre inter mártyres potest, precípuus vidétur esse qui primus est. Nam cum sanctus Stéphanus ab apóstolis dyáconus ordinátus sit, apóstolos ipsos beáta ac triumpháli morte precéssit, ac sic qui erat inférior órdine, primus factus est passióne. Mortem enim quam Salvátor dignátus est pro ómnibus pati~: hanc ille primus réddidit Salvatóri. Vidéte enim dilectíssimi fratres afféctum beáti viri~: vidéte magnam et admirábilem charitátem.
+\end{lesson}
+
+\begin{lesson}
+\subsubsection{Si dominica fuerit. Lectio quarta.}
+
+\lettrine{I}{n} persecutióne pósitus erat et pro persecutóribus supplicábat~: atque in illa lápidum ruína quando álius oblivísci póterat étiam charíssimos suos~: ille Dómino commendábat inimícos. Quid enim dicébat cum lapidarétur~? Dómine (inquit) ne státuas illis hoc peccátum. Plus ítaque tunc dolébat illórum peccáta~: quam sua vúlnera. Plus illórum impietátem~: quam suam mortem. Et recte plus. In illórum quippe iniquitáte erant multa que póterant plangi~: in illíus autem morte non erat quod debuísset doléri.
+\end{lesson}
+
+\emph{℟.} Lapidábant. \emph{v.} 354.
+
+\begin{lesson}
+\subsubsection{Lectio tertia. {[}sive v.{]}}
+
+\lettrine{I}{m}itémur ergo in áliquo, dilectíssimi fratres, tanti magístri fidem~: tam preclári mártyris charitátem. Diligámus nos hoc in ecclésia fratres nostros ánimo~: quo ille tunc diléxit inimícos suos. Sed quod pejus est, aliquótiens non solum inimícos non dilígimus~: sed nec amícis quidem fidem íntegram custódimus. Sed dicit áliquis~: Non possum dilígere inimícum meum~: quem quotídie velut hostem crudélem pátior. O quicúnque ille es~: atténdis quid tibi fécerit homo~: et non consíderas quid tu féceris Deo.
+\end{lesson}
+
+\begin{lesson}
+\subsubsection{¶ Si dominica fuerit. Lectio sexta.}
+
+\lettrine{C}{u}m enim tu multum gravióra in Deum peccáta commíseris~: quare non dimíttis hómini parvum~: ut tibi Deus dignétur dimíttere multum~? Récole quid tibi in evangélio Véritas ipsa promíserit~: et quam tibi quodámmodo cautiónem fécerit~: vel quale tecum pactum iníerit. Si enim (inquit) dimiséritis homínibus peccáta eórum~: dimíttet et vobis Pater vester celéstis peccáta vestra. Vidétis fratres quia cum Dei grátia in \marginnote{48v}potestáte nostra pósitum est~: quáliter a Dómino judicémur. Si (inquit) dimiséritis~: dimittétur vobis. Móneo ergo vos fratres ut in malis homínibus medicórum vicem ágere studeátis~: et non ipsos hómines sed ipsórum malíciam ódio habeátis. Pro bonis oráte ut semper ad melióra conscéndant~: pro malis, ut cito ad emendatiónem vite per peniténtie laménta confúgiant. Tu.
+\end{lesson}
+
+\emph{℟.} Lápides torréntes. \emph{vj.} 356.
+
+\emph{Si vero dominica fuerit~:} {[}\emph{tunc}{]}\footnote{1519:96r.} \emph{erit secundum ℟.} Vidébant omnes. 347. \emph{et tercium ℟.} Impetum fecérunt. 348.
+
+\emph{Ps.} Te Deum. {[}44{]}.
+
+\section{{[}Ante laudes.{]}}
+
+\emph{℣.} Posuísti Dómine. XX.
+
+{[}\emph{Tunc si dominica fuerit versiculum} Ora pro nobis. XX.{]}\footnote{1519:96r.}
+
+\section{In laudibus.}
+
+\emph{Hec sola ant.} Lapidavérunt. 363.
+
+\emph{Ps.} Dóminus regnávit. (\emph{xcij.}) {[}49{]}.
+
+\emph{Capitulum, hymnus, versus et antiphona super ps.} Benedíctus. \emph{cum oratione sicut in prima die.} 365.
+
+\subsection{Memoria de sancto Johanne.}
+
+\emph{Ubi processio de eo prius facta fuerit, cum hac antiphona} Supra pectus. 377. \emph{Ubi vero non~: tunc dicitur antiphona} Quasi unus. 377.
+
+\emph{℣.} Valde honorándus. 373.
+
+\emph{Oratio.} Ecclésiam tuam. 373.
+
+\subsection{Memoria de innocentibus.}
+
+\emph{Ubi processio puerorum facta fuerit, cum hac antiphona} A bimátu. 425. \emph{Ubi vero non~: tunc dicitur antiphona} Vox in Rama. 429.
+
+\emph{℣.} Mirábilis Deus. {[}191{]}.
+
+\emph{Oratio.} Deus cujus hodiérna.\footnote{1531:48v. has `Deus qui hodiérna'.} 405.
+
+\subsection{Memoria de sancto Thoma.}
+
+\emph{Ubi processio de eo prius facta fuerit, cum hac antiphona} Aqua Thome. 455. \emph{Ubi vero non~: tunc dicitur antiphona} Ad Thome. 459.
+
+\emph{℣.} Ora pro nobis. XX.
+
+\emph{Oratio.} Deus pro cujus ecclésia. 437.
+
+\subsection{Memoria de sancta Maria.}
+
+\emph{Cum hac antiphona} Ecce María. {[}186{]}.
+
+\emph{℣.} Post partum. {[}187{]}.
+
+\emph{Oratio.} Deus qui salútis. {[}188{]}. \newline
+
+\emph{Ab hac} {[}\emph{etiam}{]}\footnote{1519:96r.} \emph{die usque ad purificationem} {[}\emph{beate Marie}{]}\footnote{1519:96r.} \emph{quotidie fiant memorie de sancta Maria} \emph{de quocunque fiat servitium tam ad vesperas quam ad matutinas, nisi in vigilia epyphanie, et in die}\footnote{`festo', 1519:96r.} \emph{ejusdem.}
+
+\emph{In festis novem lectionum, et in octavis, et infra octavas, quando chorus regitur, et in dominicis ad utrasque vesperas, cum hac antiphona} Quando natus. {[}186{]}. \emph{℣.} Speciósus forma. {[}188{]}. \emph{Oratio.} Deus qui salútis. {[}188{]}. \emph{Ad matutinas vero cum hac antiphona} Ecce María. {[}186{]}. \emph{℣.} Post partum. {[}187{]}. {[}\emph{Oratio} Deus qui salútis.{]}\footnote{1519:96r.}
+
+\emph{In feriis vero et in festis iij. lectionum sine regimine chori ad vesperas} {[}\emph{cum hac}{]}\footnote{1519:96r.} \emph{ant.} Rubum quem víderat. {[}187{]}. \emph{℣.} Speciósus forma. {[}188{]}. \emph{Oratio.} Deus qui salútis. {[}188{]}. \emph{Ad matutinas} {[}\emph{cum hac}{]}\footnote{1519:96r.} \emph{ant.} Germinávit. {[}187{]}. \emph{℣.} Post partum.\footnote{\emph{`Ant.} Post partum \emph{Versus}. Germinavit'. 1531:48v. 1519:96r. indicates the correct order. Legendum, ut videtur, \emph{`Ant.} Germinavit. 504. \emph{Versus,} Post partum'. ut in Psalterio. {[}187{]}. {[}SB:ccxcix.{]}} {[}187{]}. \emph{Oratio ut supra.} {[}Deus qui salútis.{]}\footnote{1519:96r.} {[}188{]}.
+
+\noindent ¶ \emph{Quod si octava sancti Stephani in dominica evenerit fiant ix. lectiones de sancto Stephano videlicet sex de tribus lectionibus supra notatis de octava et tres ultime lectiones de expositione evangelii sicut in prima die. Responsoria, vero propria que habentur de octava primo loco~: id est in primo nocturno cantentur~: dehinc hystoria diei suo ordine dicatur. Ad laudes vero omnes antiphone dicantur, et cetera sicut in die.}\footnote{`¶ Ad laudes vero una sola ant. dicatur~: cetera sicut in die. Similiter fiat de octava sancti Johannis, et de innocentibus'. 1519:96v.}
+
+\emph{Similiter fiat de sancto Johanne, et de innocentibus.}
+
+\emph{Sciendum est autem quod quando octava sancti Johannis in dominica evenerit, vespere in sabbato precedenti de sancto Stephano erunt~: et memoria de sancto Johanne cum hac antiphona} Valde honorándus. 373. \emph{℣.} In omnem terram. XX. \emph{Oratio.} Ecclésiam tuam. 373.
+
+\emph{Similiter quando octava sanctorum innocentium in dominica evenerit, vespere in sabbato precedenti erunt de sancto Johanne, et memoria de innocentibus cum hac antiphona} Innocéntes pro Christo. 409. \emph{℣.} Letámini in Dómino. {[}194{]}. \emph{Oratio.} Deus cujus hodiérna die. 405.
+
+\noindent ¶ \emph{Hic primum fiant matutine de sancta Maria in conventu~: ut plene notatur post commune sanctorum, et ibi require omnia de sancta Maria.}\footnote{At this point 1519:96v. includes the text of the Little Office of the Virgin.} \textsc{{[}486{]}.}
+
+\section{{[}Ad primam.{]}}
+
+\noindent ¶ \emph{Ad j. de sancto Stephano sive dominica fuerit sive non.}
+
+\emph{Ant.} Lapidavérunt. 363.
+
+\emph{Ps.} Deus in nómine. (\emph{liij.}) {[}97{]}.
+
+\emph{Ant.} Te jure. {[}101{]}.
+
+\emph{Ps.} Quicúnque vult. {[}102{]}. \newline
+
+\noindent ¶ \emph{Ad tertiam et ad alias horas antiphone, psalmi, capitula Responsoria et versus sicut in die sancti Stephani dicantur sive dominica fuerit sive non, cum oratione de prima die.}
+
+\section[Ad {[}ij.{]} vesperas.]{\texorpdfstring{Ad {[}ij.{]}\footnote{1519:101v.} vesperas.}{Ad {[}ij.{]} vesperas.}}
+
+{[}\emph{In octavis sancti Stephani que de ipso erunt~:}{]}\footnote{1519:101v.}
+
+\emph{Ant.} Tecum princípium. 329.
+
+\emph{Ps.} Dixit Dóminus. (\emph{cix.}) {[}306{]}.
+
+\emph{Capitulum \&c.} {[}\emph{omnia}{]}\footnote{1519:101v.} \emph{sicut in prima die dicantur~: preter Responsorium quod non dicetur.}
+
+\subsection{Memoria de sancto Johanne.}
+
+{[}\emph{Sive de eo facta fuerit processio sive non.}{]}\footnote{1519:101v.}
+
+\emph{Ant.} Valde honorándus. 373.
+
+\emph{℣.} In omnem terram. XX.
+
+\emph{Oratio.} Ecclésiam tuam. 373.
+
+\subsection{Memoria de innocentibus.}
+
+\emph{Ubi processio puerorum facta fuerit~: cum hac antiphona} Vox in Rama. 429. \emph{Ubi vero non~: tunc dicatur antiphona} Sub throno. 425.
+
+\emph{℣.} Letámini in Dómino. {[}194{]}.
+
+\emph{Oratio.} Deus cujus hodiérna die.\footnote{1519:101v. has `Deus qui hodiérna'.} 405.
+
+\subsection{Memoria de sancto Thoma.}
+
+\emph{Ubi processio prius de eo facta fuerit~: cum hac antiphona} Ad Thome. 440. \emph{Ubi vero processio facta non fuerit dicitur antiphona} Tu per Thome. 460.
+
+\emph{℣.} Ora pro nobis. XX.
+
+\emph{Oratio.} Deus pro cujus ecclésia. 437.
+
+\subsection{Memoria de sancta Maria.}
+
+\emph{Sive dominica fuerit sive non~: cum hac antiphona} Quando natus es. 503.
+
+\emph{℣.} Speciósus forma. {[}188{]}.
+
+\emph{Oratio.} Deus qui salútis. {[}188{]}.\footnote{At this point 1519:96v–101v. contains text, music and rubrics for the Full Office of the Virgin (Servitium plenum beate Marie). This material can be found in Fasciculus B-2, pages 129-139, and in Fascicule A-14, pages {[}XX{]} ff.}
+
+\chapter{¶ In octava sancti Johannis apostoli.}
+
+\section{Ad matutinas.}
+
+\emph{Invitatorium, hymnus, antiphone et psalmi sicut in prima die dicantur.}\footnote{`\emph{ad matutinas invitatorium} Adorémus regem apostolórum'. \emph{Quod si in dominica non fuerit tunc dicatur iste cantus}. {[}\emph{Veníte, Tone IV.i. incipit}{]} \emph{Hymnus} Bina celéstis. \emph{ant}. Johánnes. \emph{Ps}. Celi enárrant. \emph{et alie cum suis pasalmis dicantur}'. 1519:101v.} 374.
+
+\emph{℣.} In omnem terram exívit sonus eórum. XX.
+
+\begin{lesson1}
+\subsubsection{Lectio j.}
+
+\lettrine{C}{u}m post Domiciáni óbitum beátus Johánnes de Pathmos ínsula Ephesum redíret~: rogabátur vicínas lustráre províncias quo vel ecclésias fundáret in quibus non erant locis, vel in quibus erant~: sacerdótibus ac minístris instrúeret~: secúndum quod ei de unoquóque Spiritussánctus indicásset. Cum ígitur venísset ad quandam urbem ómnibus ecclesiásticis solénniter adimplétis, \marginnote{49r}vidit júvenem quendam válidum córpore~: sed et ánimo acrem nimis. Respiciénsque ad epíscopum qui nuper fúerat ordinátus~: hunc (inquit) tibi comméndo~: sub testimónio Christi et tótius ecclésie.
+\end{lesson1}
+
+\begin{lesson}
+\subsubsection{Si dominica fuerit. Lectio ij.}
+
+\lettrine{T}{u}nc ille júvenem suscípiens~: omnem se adhibitúrum diligéntiam pollicétur. Post hec apóstolus Ephesum rédiit. Tunc vero présbiter in domum suam adolescéntem suscépit commendátum~: et cum omni diligéntia enútrit, ampléctitur, ad últimum étiam baptísmi grátiam tradit. Tu autem {[}Dómine miserére nostri{]}.\footnote{TSB:ccci.}
+\end{lesson}
+
+\gregorioscore{006819-hic-est-beatissimus}
+
+\begin{lesson}
+\subsubsection[Lectio secunda. {[}sive iij.{]}]{\texorpdfstring{Lectio secunda. {[}sive iij.{]}\footnote{SB:cccii.}}{Lectio secunda. {[}sive iij.{]}}}
+
+\lettrine{P}{o}st hec jam velut confídens présbiter grátie qua júvenem commonúerat, paulo indulgéntius eum cepit habére. Sed ille ubi in matúra libertáte pósitus est~: contínuo per equévos, quibus luxus et desídia cordi est corrúpte vie incédere trámitem perdocétur. Post hec jam ad majóra flagítia júvenis pertráhitur~: et dedignabátur jam de parvis sceléribus cogitáre. Dénique ipsos qui prius magístri fúerant discípulos facit~: et his cum omni crudelitáte grassátur. Tu autem.
+\end{lesson}
+
+\begin{lesson}
+\subsubsection{Si dominica fuerit. Lectio quarta.}
+
+\lettrine{C}{u}m autem ad eándem urbem íterum venísset Johánnes et cétera quorum grátia vénerat ordinásset~: age (inquit) o epíscope depósitum represénta~: quod tibi ego et Christus commendávimus. At ille obstúpuit pecúniam putans a se repósci~: quam non accéperat. Quem Johánnes errántem videns~: júvenem inquit illum repéto a te et ánimam fratris. Tunc gráviter súspirans sénior~: in láchrimis resolútus illi ait, Mórtuus est. Quómodo (inquit) vel quali morte~? Deo (ait) mórtuus est, quia péssimus et flagitiósus evásit. Quibus audítis Apóstolus contínuo vestem qua indútus erat scindens~: bonum te inquit custódem fratris ánime derelíqui. Sed jam parétur michi equus~: et dux itíneris. Et conféstim ab ipsa ecclésia ascéndens concítus properábat. Tu autem.
+\end{lesson}
+
+\gregorioscore{007486-qui-vicerit}
+
+\begin{lesson}
+\subsubsection{Lectio tertia. {[}sive v.{]}}
+
+\lettrine{C}{u}m ergo beátus Johánnes pervenísset ad locum~: attinétur ab his latrónibus qui custódias observábant. Sed ille nusquam effúgere nitens, hac voce tantum proclamábat, quia ad hoc ipsum veni~: addúcite michi príncipem vestrum. Qui cum veníret armátus éminus ágnito Johánne apóstolo pudóre actus~: in fugam vértitur. Ille in equo post eum admísso conféstim inséquitur fugitántem~: clamans, Quid fugis O fili patrem tuum~: quid fugis inérmem senem~? Noli timére~: habes adhuc spem vite. Ego Christo ratiónem reddam pro te. Certe et mortem pro te libénter excípiam sicut et Christus excépit pro nobis~: et pro tua ánima dabo ánimam meam. Sta tantum et crede michi~: quia Christus me misit. At ille áudiens réstitit~: et vultum demísit in terram.
+\end{lesson}
+
+\begin{lesson}
+\subsubsection{Si dominica fuerit. Lectio vj.}
+
+\lettrine{P}{o}st hec arma projécit. Tum deínde tremefáctus flevit amaríssime. Et accedéntis ad se senis génibus provólvitur~: gemítibus et ululátibus quibus póterat satisfáciens. Apóstolus vero se ei a Salvatóre impetratúrum véniam póllicens~: ad ecclésiam révocat. Et indesinénter pro eo oratiónes profúndens~: indulgéntiam a Deo quam ei pollícitus fúerat expetébat. Nec prius ábstitit quam eum in ómnibus emendátum ecclésie prefíceret~: prebens per hoc magna exémpla vere peniténtie~: et documéntum ingens nove regeneratiónis.
+\end{lesson}
+
+\emph{℟.} Appáruit caro suo. \emph{℣.} Cunque complésset. \emph{vj.} 388.
+
+\emph{Si dominica fuerit~: tunc erit tertium Responsorium} Iste est Johánnes. 381.
+
+\emph{Et deinceps tota hystoria dicatur sicut in prima die usque ad laudes.}
+
+{[}\emph{Tamen si dominca fuerit sive non semper dicatur}{]}\footnote{1519:102r.} \emph{Ps.} Te Deum. {[}44{]}.
+
+\section{{[}Ante laudes.{]}}
+
+\emph{℣.} Valde honorándus. 373.
+
+\section{In laudibus.}
+
+\emph{Hec sola antiphona.} Hic est discípulus ille. 395.
+
+\emph{Ps.} Dóminus regnávit. (\emph{xcij.}) {[}49{]}. \emph{sive dominica fuerit sive non.}
+
+\emph{Capitulum, hymnus, versus, antiphona super psalmum} Benedíctus. \emph{cum oratione sicut in} {[}\emph{prima}{]}\footnote{1519:102r.} \emph{die dicantur.} 396.
+
+\subsection{Memoria de innocentibus.}
+
+\emph{Ubi processio puerorum facta fuerit, cum hac antiphona} Sub throno. 429. \emph{Ubi vero non~: tunc dicitur antiphona} Laudes reddant. 430.
+
+\emph{℣.} Mirábilis Deus. {[}191{]}.
+
+\emph{Oratio.} Deus cujus hodiérna. 405.
+
+\subsection{Memoria de sancto Thoma.}
+
+\emph{Ubi \marginnote{49v}processio de eo prius facta fuerit~: cum hac antiphona} Tu per Thome. 460. \emph{Ubi vero non~: tunc dicitur antiphona} Summo sacerdótio. 442.
+
+\emph{℣.} Ora pro nobis. XX.
+
+\emph{Oratio.} Deus pro cujus ecclésia. 437.
+
+\subsection{Memoria de sancta Maria.}
+
+\emph{Sive dominica fuerit sive non~: cum hac antiphona} Ecce María. {[}186{]}.
+
+\emph{℣.} Post partum. {[}187{]}.
+
+\emph{Oratio.} Deus qui salútis. {[}188{]}.
+
+\section{Ad j.}
+
+\emph{Ant.} Hic est discípulus ille. 395.
+
+\emph{Ps.} Deus in nómine. (\emph{liij.}) {[}97{]}.
+
+\emph{Ant.} Te jure. {[}101{]}.
+
+\emph{Ps.} Quicúnque. {[}102{]}.
+
+\section{{[}Ad alias horas.{]}}
+
+\emph{Ad alias horas, antiphone, psalmi, capitula, Responsoria et versus cum oratione sicut in prima die dicantur.} 398.
+
+\section{Ad vesperas.}
+
+{[}\emph{Vespere fiant de sancto Johanne.}{]}\footnote{1519:102r.}
+
+\emph{Ant.} Tecum princípium. 329.
+
+\emph{Ps.} Dixit Dóminus. (\emph{cix.}) {[}306{]}.
+
+\emph{Antiphone, psalmi, capitulum, et cetera omnia sicut in} {[}\emph{prima}{]}\footnote{1519:102r.} \emph{die sancti Johannis} {[}\emph{dicantur ad secundas vesperas}{]}\footnote{1519:102r.} 401. \emph{preter Responsorium quod non dicetur.}
+
+\subsection{Memoria de innocentibus.}
+
+{[}\emph{Sive de eis processio facta fuerit sive non.}{]}\footnote{1519:102r.}
+
+\emph{Ant.} Innocéntes. 409.
+
+\emph{℣.} Letámini. {[}194{]}.
+
+\emph{Oratio.} Deus cujus hodiérna die. 405.
+
+\subsection{Memoria de sancto Thoma.}
+
+\emph{Ubi processio de eo} {[}\emph{prius}{]}\footnote{1519:102r.} \emph{facta fuerit~: cum hac antiphona} Summo sacerdótio. 442. \emph{Ubi vero non~: tunc dicitur antiphona} Monáchus sub. 442.
+
+\emph{℣.} Ora pro nobis. XX.
+
+\emph{Oratio.} Deus pro cujus ecclésia. 437.
+
+\subsection{Memoria de sancta Maria.}
+
+\emph{Sive dominica fuerit sive non~: cum hac antiphona} Quando natus. {[}186{]}.
+
+\emph{℣.} Speciósus forma. {[}188{]}.
+
+\emph{Oratio.} Deus qui salútis. {[}188{]}.
+
+\chapter{¶ In octava sanctorum innocentium.}
+
+\section{Ad matutinas.}
+
+\emph{Invitatorium, hymnus, antiphone et psalmi, sicut in prima die dicantur.} 411. \emph{℣.} Letámini in Dómino. {[}194{]}.
+
+\begin{lesson1}
+\subsubsection[Lectio prima.]{\texorpdfstring{Lectio prima.\footnote{Augustin. de Sanctis 10, ed.~Benedict. Appendix. Sermo 220, Tom. \textsc{v}. col.~2914. Paris. {[}SB:cccv{]}.}}{Lectio prima.}}
+
+\lettrine{H}{o}die fratres charíssimi natálem illórum infántium cólimus quos ab Heróde crudelíssimo rege interféctos esse evangélii textus elóquitur. Et ídeo cum summa exultatióne gáudeat terra nostra~: celéstium mílitum et tantárum parens fecúnda virtútum. Ecce prophánus hostis nunquam beátis párvulis tantum prodésse potuísset obséquio~: quantum prófuit ódio. Nam sicut sacratíssima preséntis diéi festa maniféstant, quanta contra beátos párvulos iníquitas abundávit~: tanta in eis grátia benedictiónis effúlsit.
+\end{lesson1}
+
+\begin{lesson}
+\subsubsection{Si dominica fuerit. Lectio secunda.}
+
+\lettrine{B}{e}áta es o Béthleem terra Juda~: que Heródis regis immanitátem in puerórum extinctióne perpéssa es~: que sub uno témpore candidátam plebem imbéllis infántie Deo offérre meruísti. Digne tamen natále illórum infántium\footnote{BSB:cccvi. omits `infántium'.} cólimus, quos beátius etérne vite munus édidit, quam quos maternórum víscerum partus effúdit. Síquidem ante vite perpétue adépti sunt dignitátem~: quam usum preséntis accíperent.
+\end{lesson}
+
+\gregorioscore{006266-cantabant-sancti}
+
+\begin{lesson}
+\subsubsection{Lectio secunda. {[}sive iij.{]}}
+
+\lettrine{A}{l}iórum quidem preciósa mors mártyrum laudem in confessióne proméruit~: horum in consummatióne complácuit~: quia incipiéntis vite primórdiis ipse eis occásus inítium glórie dedit qui preséntis términum impósuit~: quos Heródis impíetas lacténtes matrum ubéribus abstráxit. Qui jure dicúntur mártyrum flores quos in médio frigóre infidelitátis exórtos, velut primas erumpéntes ecclésie gemmas quedam persecutiónis\footnote{A1531:49v. `persecutiónes'.} pruína decóxit. Et ídeo dignum est interféctis pro Christo infántibus honóris impéndere ceremónias non dolóris~: et sacraméntis dare vota non láchrimis, quia ipse illis fuit causa pene~: qui éxtitit et coróne, ipse ódii causa~: qui prémii.
+\end{lesson}
+
+\emph{Sive dominica fuerit sive non} {[}\emph{semper erit}{]}\footnote{1519:102v.} \emph{ij. ℟.} Sub throno. 415.
+
+\begin{lesson}
+\subsubsection{Lectio iij. {[}sive iv.{]}}
+
+\lettrine{P}{a}ránte autem Heródo párvulis necem~: Joseph per ángelum monétur ut Christum Dóminum in Egýptum tránsferat. Egýptus idólis erat plena. Nam post idolórum persecutiónem et ad occidéndum Christum propháne plebis assénsum~: Christus ad gentes idólis déditas transíre dignátur~: et Judéam relínquens ignoránti século coléndus infértur. Et quia in Scriptúris divínis fratres charíssimi bonos et justos viros persecutiónem malórum semper sustinuísse cognóscimus~: si diligénter considerámus invénimus illos majóra supplícia sustinére qui fáciunt~: quam qui sustinére vidéntur.
+\end{lesson}
+
+\emph{Si dominica non fuerit~: sit tertium ℟.} Centum quadragínta. 402.
+
+\emph{Si vero dominica fuerit~: tunc erit iij. ℟.} Dignus a dignis. 417. \emph{Et fiant quattuor lectiones de istis tribus precedentibus et pro quinta et sexta dicantur due lectiones sequentes.}
+
+\begin{lesson}
+\subsubsection[Lectio quinta.]{\texorpdfstring{Lectio quinta.\footnote{Augustin. \textsc{v}. col.~2915. {[}SB:cccvii.{]}}}{Lectio quinta.}}
+
+\lettrine{O}{m}nis homo qui álium in córpore perséquitur~: prius ipse in corde persecutiónem sustinére cognóscitur. Nam si étiam illi quem perséquitur áliquid de substántia sua túlerit~: majus sibi ipse dispéndium facit~: quia nemo habet injústum lucrum sine justo damno. Ubi lucrum~: ibi et damnum. Lucrum in archa, damnum in consciéntia. Tollit vestem~: et perdit fidem. Acquírit pecúniam~: et perdit justítiam. Sed hoc hómines ídeo fáciunt~: quia diem novíssimam atténdere nolunt. Si enim diem mortis sue \marginnote{50r}cogitáre júgiter vellent~: ánimos suos ab omni cupiditáte et malícia cohíberent. Sed quod modo nolunt salúbriter cogitáre~: necésse habent póstea sine ullo remédio sustínere.
+\end{lesson}
+
+\begin{lesson}
+\subsubsection{Lectio sexta.}
+
+\lettrine{V}{e}niet enim fratres dies novíssimus, dies véniet judícii quando eis nec peniténtiam licébit ágere, nec bonis opéribus se ab etérna morte potérunt redímere. Qui percútitur étiam hac animadversióne percútitur, ut móriens obliviscátur sui qui dum víveret oblítus est Dei. Véniet dies judícii quando movebúntur fundaménta móntium~: et ardébit terra usque ad ínferos deórsum~: quando celi ardéntes solvéntur~: quando sol obscurábitur et luna non dabit lumen suum, quando stelle cadent de celo~: quando peccatóres et ímpii mitténtur in stagnum ignis. Et fumus tormentórum illórum ascéndet in sécula seculórum~: ubi erit fletus et stridor déntium.
+\end{lesson}
+
+\emph{Tres ultime lectiones si dominica fuerit~: erunt sicut in prima die.}
+
+\emph{Deinde dicatur tota hystoria usque ad laudes sicut in prima die~: dicatur ps.} Te Deum. {[}44{]}. \emph{℣.} Justi\footnote{`Justi autem', 1519:102v.} in perpétuum. XX.
+
+\section{{[}In laudibus.{]}}
+
+\emph{In laudibus hec sola antiphona} Heródes irátus. 428. \emph{Ps.} Dóminus regnávit. (\emph{xcij.}) {[}49{]}. \emph{sive dominica fuerit sive non. Capitulum et cetera omnia sicut in prima die {[}dicantur{]}.}\footnote{1519:102v.} 430.
+
+\subsection{Memoria de sancto Thoma.}
+
+\emph{Ubi processio de eo prius facta fuerit~: cum hac antiphona} Monáchus. 442. \emph{ubi vero non~: tunc dicatur ant.} Cultor agri. 442.
+
+\emph{℣.} Ora pro nobis. XX.
+
+\emph{Oratio.} Deus pro cujus ecclésia. 437.
+
+\subsection{Memoria de sancta Maria.}
+
+\emph{Sive dominica fuerit, sive non cum hac ant.} Ecce María. {[}186{]}.
+
+\emph{℣.} Post partum. {[}187{]}.
+
+\emph{Oratio.} Deus qui salútis. {[}188{]}.
+
+\section{Ad j.}
+
+\emph{Ant.} Heródes irátus. 428.
+
+\emph{Ps.} Deus in nómine. (\emph{liij.}) {[}97{]}.
+
+\emph{Ant.} Te jure. {[}101{]}.
+
+\emph{Ps.} Quicúnque. {[}102{]}.
+
+\section{{[}Ad alias horas.{]}}
+
+\emph{Ad iij. et ad alias horas antiphone, psalmi, capitula, Responsoria et versus, cum oratione, sicut in prima die} {[}\emph{dicantur}{]}\emph{.}\footnote{1519:102v.} 432.
+
+\section{Ad vesperas.}
+
+{[}\emph{Vespere de innocentibus dicantur.}{]}\footnote{1519:102v.}
+
+\emph{Ant.} Tecum princípium. 329.
+
+\emph{Ps.} Dixit Dóminus. (\emph{cix.}) {[}306{]}.
+
+\emph{Capitulum et cetera} {[}\emph{omnia}{]}\footnote{1519:102v.} \emph{sicut in prima die sanctorum innocentium dicuntur~: preter Responsorium, quod non dicetur.} 433.
+
+\subsection{Memoria de sancto Thoma.}
+
+{[}\emph{Si de eo facta fuerit processo sive non.}{]}\footnote{1519:102v.}
+
+\emph{Ant.} Pastor cesus. 438.
+
+\emph{℣.} Ora pro nobis.\footnote{`Glória et honóre', 1519:102v.} XX.
+
+\emph{Oratio.} Deus pro cujus ecclésia. 437.
+
+\subsection{{[}Memoria de sancto Edwardo.{]}}
+
+\emph{Deinde fiat memoria de sancto Edwardo~: rege et confessore.}
+
+\emph{Ant.} Conféssor Dómini. XX.
+
+\emph{℣.} Amávit eum Dóminus et ornávit eum. XX.
+
+\begin{lesson}
+\subsubsection{Oratio.}
+
+\lettrine{D}{e}us qui unigénitum Fílium tuum Dóminum nostrum Jesum Christum gloriosíssimo regi Edwárdo in forma visíbili demonstrásti, tríbue quésumus, ut ejus méritis et précibus ad etérnam ipsíus\footnote{`éjusdem', 1519:103r.} Dómini nostri Jesu Christi visiónem pertíngere mereámur.\footnote{`valeámus', 1519:103r.} Qui tecum.
+\end{lesson}
+
+\subsection[{[}Sequatur{]} Memoria de sancta Maria.]{\texorpdfstring{{[}Sequatur{]}\footnote{1519:103r.} Memoria de sancta Maria.}{{[}Sequatur{]} Memoria de sancta Maria.}}
+
+\emph{Ant.} Quando natus. {[}186{]}.
+
+\emph{℣.} Speciósus forma. {[}188{]}.
+
+\emph{Oratio.} Deus qui salútis. {[}188{]}.
+
+\backmatter
+
+\printendnotes
+
+\end{document}
